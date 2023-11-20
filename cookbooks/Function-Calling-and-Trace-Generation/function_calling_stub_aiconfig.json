@@ -1,36 +1,31 @@
-spec = {
-    "name": "NYC Trip Planner",
-    "description": "Intrepid explorer with ChatGPT and AIConfig",
+{
+    "name": "function-call-demo",
+    "description": "this is a demo AIConfig to show function calling using OpenAI",
     "schema_version": "latest",
-    "metadata": {
-      "models": {
-        "gpt-3.5-turbo": {
-          "model": "gpt-3.5-turbo",
-          "top_p": 1,
-          "temperature": 1
-        },
-        "gpt-4": {
-          "model": "gpt-4",
-          "max_tokens": 3000,
-          "system_prompt": "You are an expert travel coordinator with exquisite taste."
-        }
-      },
-      "default_model": "gpt-3.5-turbo"
-    },
+    "metadata": {},
     "prompts": [
-      {
-        "name": "get_activities",
-        "input": "Tell me 10 unique luxury activities in NYC."
-      },
-      {
-        "name": "gen_itinerary",
-        "input": "Generate a ranked list ordered by {{order_by}} for these activities: {{get_activities.output}}. Include estimated cost.",
-        "metadata": {
-          "model": "gpt-4",
-          "parameters": {
-            "order_by": "activity expense, from most to least"
-          }
+        {
+            "name": "recommendBook",
+            "input": {
+                "role": "user",
+                "content": "I really enjoyed reading {{book}}, could you recommend me a book that is similar and tell me why?"
+            },
+            "metadata": {
+                "model": {
+                    "name": "gpt-3.5-turbo",
+                    "settings": {
+                        "model": "gpt-3.5-turbo",
+                        "functions": [
+                        ],
+                        "system_prompt": {
+                        "role": "system",
+                        "content": "Please use our book database, which you can access using functions to answer the following questions."
+                        }
+                    }
+                },
+                "parameters": {},
+                "remember_chat_context": true
+            }
         }
-      }
-    ]
-  }
+  ]
+}
