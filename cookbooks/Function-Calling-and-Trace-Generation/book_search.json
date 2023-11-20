@@ -1,0 +1,371 @@
+{
+  "name": "function-call-demo",
+  "schema_version": "latest",
+  "metadata": {
+    "parameters": {},
+    "models": {}
+  },
+  "description": "this is a demo AIConfig to show function calling using OpenAI",
+  "prompts": [
+    {
+      "name": "recommendBook",
+      "input": {
+        "role": "user",
+        "content": "I really enjoyed reading {{book}}, could you recommend me a book that is similar and tell me why?"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "list_items",
+                "description": "list queries books by genre, and returns a list of names of books",
+                "parameters": {
+                  "properties": {
+                    "genre": {
+                      "title": "Genre",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "genre"
+                  ],
+                  "title": "Input for `list_items`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "search",
+                "description": "search queries books by their name and returns a list of book names and their ids",
+                "parameters": {
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "title": "Input for `search`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "get",
+                "description": "get returns a book's detailed information based on the id of the book. Note that this does not accept names, and only IDs, which you can get by using search.",
+                "parameters": {
+                  "properties": {
+                    "id": {
+                      "title": "Id",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "title": "Input for `get`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "Please use our book database, which you can access using functions to answer the following questions."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "function_call": {
+              "arguments": "{\n  \"name\": \"Where the Crawdads Sing\"\n}",
+              "name": "search"
+            },
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "function_call"
+          }
+        }
+      ]
+    },
+    {
+      "name": "functionCallResult-ef72b846-db57-4041-8ddf-ff7051bbc9e6",
+      "input": {
+        "role": "function",
+        "name": "search",
+        "content": "[{\"name\": \"Where the Crawdads Sing\", \"id\": \"a3\"}]"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "list_items",
+                "description": "list queries books by genre, and returns a list of names of books",
+                "parameters": {
+                  "properties": {
+                    "genre": {
+                      "title": "Genre",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "genre"
+                  ],
+                  "title": "Input for `list_items`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "search",
+                "description": "search queries books by their name and returns a list of book names and their ids",
+                "parameters": {
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "title": "Input for `search`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "get",
+                "description": "get returns a book's detailed information based on the id of the book. Note that this does not accept names, and only IDs, which you can get by using search.",
+                "parameters": {
+                  "properties": {
+                    "id": {
+                      "title": "Id",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "title": "Input for `get`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "Please use our book database, which you can access using functions to answer the following questions."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "function_call": {
+              "arguments": "{\n  \"id\": \"a3\"\n}",
+              "name": "get"
+            },
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "function_call"
+          }
+        }
+      ]
+    },
+    {
+      "name": "functionCallResult-488385d9-b356-4f26-b032-b99dc67b3f14",
+      "input": {
+        "role": "function",
+        "name": "get",
+        "content": "{\"id\": \"a3\", \"name\": \"Where the Crawdads Sing\", \"genre\": \"historical\", \"description\": \"For years, rumors of the \\u201cMarsh Girl\\u201d haunted Barkley Cove, a quiet fishing village. Kya Clark is barefoot and wild; unfit for polite society. So in late 1969, when the popular Chase Andrews is found dead, locals immediately suspect her.\\n\\nBut Kya is not what they say. A born naturalist with just one day of school, she takes life's lessons from the land, learning the real ways of the world from the dishonest signals of fireflies. But while she has the skills to live in solitude forever, the time comes when she yearns to be touched and loved. Drawn to two young men from town, who are each intrigued by her wild beauty, Kya opens herself to a new and startling world\\u2014until the unthinkable happens.\"}"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "list_items",
+                "description": "list queries books by genre, and returns a list of names of books",
+                "parameters": {
+                  "properties": {
+                    "genre": {
+                      "title": "Genre",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "genre"
+                  ],
+                  "title": "Input for `list_items`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "search",
+                "description": "search queries books by their name and returns a list of book names and their ids",
+                "parameters": {
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "title": "Input for `search`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "get",
+                "description": "get returns a book's detailed information based on the id of the book. Note that this does not accept names, and only IDs, which you can get by using search.",
+                "parameters": {
+                  "properties": {
+                    "id": {
+                      "title": "Id",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "title": "Input for `get`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "Please use our book database, which you can access using functions to answer the following questions."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "function_call": {
+              "arguments": "{\n  \"genre\": \"historical\"\n}",
+              "name": "list_items"
+            },
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "function_call"
+          }
+        }
+      ]
+    },
+    {
+      "name": "functionCallResult-7309928b-5f5d-40b8-9742-bdf7fef579ed",
+      "input": {
+        "role": "function",
+        "name": "list_items",
+        "content": "[{\"name\": \"To Kill a Mockingbird\", \"id\": \"a1\"}, {\"name\": \"All the Light We Cannot See\", \"id\": \"a2\"}, {\"name\": \"Where the Crawdads Sing\", \"id\": \"a3\"}]"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "list_items",
+                "description": "list queries books by genre, and returns a list of names of books",
+                "parameters": {
+                  "properties": {
+                    "genre": {
+                      "title": "Genre",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "genre"
+                  ],
+                  "title": "Input for `list_items`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "search",
+                "description": "search queries books by their name and returns a list of book names and their ids",
+                "parameters": {
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "title": "Input for `search`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "get",
+                "description": "get returns a book's detailed information based on the id of the book. Note that this does not accept names, and only IDs, which you can get by using search.",
+                "parameters": {
+                  "properties": {
+                    "id": {
+                      "title": "Id",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "title": "Input for `get`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "Please use our book database, which you can access using functions to answer the following questions."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "I would recommend the book \"To Kill a Mockingbird\" as a similar book to \"Where the Crawdads Sing\". \n\n\"To Kill a Mockingbird\" is also a historical novel that explores themes of innocence, injustice, and the power of compassion. Like \"Where the Crawdads Sing\", it is set in a small Southern town and delves into the complexities of human nature and the impact of societal norms on individuals.\n\nBoth books feature strong and unforgettable female protagonists who face adversity and navigate their way through difficult circumstances. These stories highlight the resilience and strength of these women as they confront the challenges of their environment.\n\nOverall, \"To Kill a Mockingbird\" shares similarities with \"Where the Crawdads Sing\" in terms of genre, themes, and compelling storytelling, making it a great recommendation for fans of the latter.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        }
+      ]
+    }
+  ]
+}
