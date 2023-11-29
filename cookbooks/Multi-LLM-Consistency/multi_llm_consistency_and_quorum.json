@@ -59,6 +59,18 @@
       }
     },
     {
+      "name": "gpt3.5-execution-sassy",
+      "input": "Answer the following question but be really sassy about it: {{input_question}}",
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {}
+        },
+        "parameters": {},
+        "remember_chat_context": false
+      }
+    },
+    {
       "name": "palm-execution",
       "input": "{{ few_shot_prompting_examples }}\n\n{{input_question}}",
       "metadata": {
@@ -72,7 +84,7 @@
     },
     {
       "name": "majority-evaluator",
-      "input": "What is the majority across across these outputs:\n1. {{ gpt4-execution.output }}\n2. {{gpt3.5-execution.output }}\n3. {{palm-execution.output }}",
+      "input": "What is the majority across across these outputs:\n1. {{ gpt4-execution.output }}\n2. {{gpt3.5-execution.output }}\n3. {{gpt3.5-execution-sassy.output }}\n",
       "metadata": {
         "model": {
           "name": "gpt-4",
