@@ -493,7 +493,7 @@ class AIConfig(BaseModel):
 
     def add_output(self, prompt_name: str, output: Output, overwrite: bool = False):
         """
-        Add an output to the [rompt with the given name in the AIConfig
+        Add an output to the prompt with the given name in the AIConfig
 
         Args:
             prompt_name (str): The name of the prompt to add the output to.

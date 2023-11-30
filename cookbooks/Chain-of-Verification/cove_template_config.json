@@ -42,6 +42,17 @@
           "metadata": {
             "finish_reason": "stop"
           }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "1. Theodore Roosevelt - 26th President of the United States\n2. Franklin D. Roosevelt - 32nd President of the United States\n3. Donald Trump - 45th President of the United States\n4. Michael Bloomberg - Former Mayor of New York City\n5. Rudy Giuliani - Former Mayor of New York City\n6. Alexander Hamilton - Founding Father of the United States\n7. Eliot Spitzer - Former Governor of New York\n8. Chuck Schumer - U.S. Senator from New York\n9. Kirsten Gillibrand - U.S. Senator from New York\n10. Bill de Blasio - Former Mayor of New York City\n11. Andrew Cuomo - Former Governor of New York\n12. Eric Schneiderman - Former Attorney General of New York\n13. Letitia James - Attorney General of New York\n14. David Dinkins - Former Mayor of New York City\n15. Adam Clayton Powell Jr. - Former U.S. Representative from New York.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
         }
       ]
     },
@@ -71,6 +82,182 @@
           "metadata": {
             "finish_reason": "stop"
           }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Al Sharpton was born in Brooklyn, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Theodore Roosevelt was born in New York City, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Franklin D. Roosevelt was born in Hyde Park, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Donald Trump was born in Queens, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Michael Bloomberg was born in Boston, Massachusetts, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Rudy Giuliani was born in Brooklyn, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Alexander Hamilton was born in Charlestown, Nevis, in the British West Indies.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Eliot Spitzer was born in The Bronx, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Chuck Schumer was born in Brooklyn, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Kirsten Gillibrand was born in Albany, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Bill de Blasio was born in Manhattan, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Andrew Cuomo was born in Queens, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Eric Schneiderman was born in New York City, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Letitia James was born in Brooklyn, New York, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "David Dinkins was born in Trenton, New Jersey, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Adam Clayton Powell Jr. was born in New Haven, Connecticut, United States.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
         }
       ]
     },
@@ -90,6 +277,17 @@
         "remember_chat_context": false
       },
       "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "### Revised Response \n1. Theodore Roosevelt - 26th President of the United States\n2. Donald Trump - 45th President of the United States\n3. Rudy Giuliani - Former Mayor of New York City\n4. Eliot Spitzer - Former Governor of New York\n5. Chuck Schumer - U.S. Senator from New York\n6. Bill de Blasio - Former Mayor of New York City\n7. Andrew Cuomo - Former Governor of New York\n8. Eric Schneiderman - Former Attorney General of New York\n9. Letitia James - Attorney General of New York\n\n### Failed Entities \n1. Franklin D. Roosevelt - He was born in Hyde Park, New York, not New York City.\n2. Michael Bloomberg - He was born in Boston, Massachusetts, not New York City.\n3. Alexander Hamilton - He was born in Charlestown, Nevis, in the British West Indies, not New York City.\n4. Kirsten Gillibrand - She was born in Albany, New York, not New York City.\n5. David Dinkins - He was born in Trenton, New Jersey, not New York City.\n6. Adam Clayton Powell Jr. - He was born in New Haven, Connecticut, not New York City.",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        },
         {
           "output_type": "execute_result",
           "execution_count": 0,
