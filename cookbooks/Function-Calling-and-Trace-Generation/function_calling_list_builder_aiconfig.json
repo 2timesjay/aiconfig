@@ -5,10 +5,10 @@
     "metadata": {},
     "prompts": [
         {
-            "name": "recommendBook",
+            "name": "recommendList",
             "input": {
                 "role": "user",
-                "content": "I really enjoyed reading {{book}}, could you recommend me a book that is similar and tell me why?"
+                "content": "Current list state: {{list}}, current query: {{user_input}}"
             },
             "metadata": {
                 "model": {
@@ -19,7 +19,7 @@
                         ],
                         "system_prompt": {
                         "role": "system",
-                        "content": "Please use our book database, which you can access using functions to answer the following questions."
+                        "content": "You are helping to make a shopping list for a user.  Please use functions to manage the list."
                         }
                     }
                 },

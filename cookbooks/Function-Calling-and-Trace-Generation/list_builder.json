@@ -1,0 +1,447 @@
+{
+  "name": "function-call-demo",
+  "schema_version": "latest",
+  "metadata": {
+    "parameters": {},
+    "models": {}
+  },
+  "description": "this is a demo AIConfig to show function calling using OpenAI",
+  "prompts": [
+    {
+      "name": "recommendList",
+      "input": {
+        "role": "user",
+        "content": "Current list state: {{list}}, current query: {{user_input}}"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "initialize_list",
+                "description": "returns an initial list of items",
+                "parameters": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "title": "Input for `initialize_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "add_to_list",
+                "description": "returns a list with items added, does not add duplicates",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "items"
+                  ],
+                  "title": "Input for `add_to_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "remove_from_list",
+                "description": "returns a list with items removed",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "items"
+                  ],
+                  "title": "Input for `remove_from_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "assess_list",
+                "description": "Accepts a dictionary of assessments of a list, keyed by the name of characteristic being assessed.",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "assessment": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "title": "Assessment",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "assessment"
+                  ],
+                  "title": "Input for `assess_list`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "You are helping to make a shopping list for a user.  Please use functions to manage the list."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "function_call": {
+              "arguments": "{\n  \"items\": [\"backpack\", \"water bottle\", \"hydration bladder\", \"snacks\", \"sunscreen\", \"hat\", \"sunglasses\", \"hiking shoes\", \"lightweight clothes\", \"first aid kit\"]\n}",
+              "name": "initialize_list"
+            },
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "function_call"
+          }
+        },
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Here is the initial list of items for your 15 mile hike in hot weather:\n\n- Backpack\n- Water bottle\n- Hydration bladder\n- Snacks\n- Sunscreen\n- Hat\n- Sunglasses\n- Hiking shoes\n- Lightweight clothes\n- First aid kit\n\nIs there anything else you would like to add to this list?",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        }
+      ]
+    },
+    {
+      "name": "functionCallResult-70ebad51-a719-436a-8a0a-45254757aea5",
+      "input": {
+        "role": "function",
+        "name": "initialize_list",
+        "content": "[\"backpack\", \"water bottle\", \"hydration bladder\", \"snacks\", \"sunscreen\", \"hat\", \"sunglasses\", \"hiking shoes\", \"lightweight clothes\", \"first aid kit\"]"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "initialize_list",
+                "description": "returns an initial list of items",
+                "parameters": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "title": "Input for `initialize_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "add_to_list",
+                "description": "returns a list with items added, does not add duplicates",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "items"
+                  ],
+                  "title": "Input for `add_to_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "remove_from_list",
+                "description": "returns a list with items removed",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "items"
+                  ],
+                  "title": "Input for `remove_from_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "assess_list",
+                "description": "Accepts a dictionary of assessments of a list, keyed by the name of characteristic being assessed.",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "assessment": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "title": "Assessment",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "assessment"
+                  ],
+                  "title": "Input for `assess_list`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "You are helping to make a shopping list for a user.  Please use functions to manage the list."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Here is the updated list:\n\n1. Backpack\n2. Water bottle\n3. Hydration bladder\n4. Snacks\n5. Sunscreen\n6. Hat\n7. Sunglasses\n8. Hiking shoes\n9. Lightweight clothes\n10. First aid kit",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        }
+      ]
+    },
+    {
+      "name": "functionCallResult-f3bf5204-2a9e-4746-b8d3-3dbea597bd58",
+      "input": {
+        "role": "function",
+        "name": "initialize_list",
+        "content": "[\"backpack\", \"water bottle\", \"hydration bladder\", \"snacks\", \"sunscreen\", \"hat\", \"sunglasses\", \"hiking shoes\", \"lightweight clothes\", \"first aid kit\"]"
+      },
+      "metadata": {
+        "model": {
+          "name": "gpt-3.5-turbo",
+          "settings": {
+            "model": "gpt-3.5-turbo",
+            "functions": [
+              {
+                "name": "initialize_list",
+                "description": "returns an initial list of items",
+                "parameters": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "title": "Input for `initialize_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "add_to_list",
+                "description": "returns a list with items added, does not add duplicates",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "items"
+                  ],
+                  "title": "Input for `add_to_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "remove_from_list",
+                "description": "returns a list with items removed",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Items",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "items"
+                  ],
+                  "title": "Input for `remove_from_list`",
+                  "type": "object"
+                }
+              },
+              {
+                "name": "assess_list",
+                "description": "Accepts a dictionary of assessments of a list, keyed by the name of characteristic being assessed.",
+                "parameters": {
+                  "properties": {
+                    "li": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Li",
+                      "type": "array"
+                    },
+                    "assessment": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "title": "Assessment",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "li",
+                    "assessment"
+                  ],
+                  "title": "Input for `assess_list`",
+                  "type": "object"
+                }
+              }
+            ],
+            "system_prompt": {
+              "role": "system",
+              "content": "You are helping to make a shopping list for a user.  Please use functions to manage the list."
+            }
+          }
+        },
+        "parameters": {},
+        "remember_chat_context": true
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "execution_count": 0,
+          "data": {
+            "content": "Here is the initial list of items for your 15 mile hike in hot weather:\n\n- Backpack\n- Water bottle\n- Hydration bladder\n- Snacks\n- Sunscreen\n- Hat\n- Sunglasses\n- Hiking shoes\n- Lightweight clothes\n- First aid kit\n\nIs there anything else you would like to add to this list?",
+            "role": "assistant"
+          },
+          "metadata": {
+            "finish_reason": "stop"
+          }
+        }
+      ]
+    }
+  ]
+}
